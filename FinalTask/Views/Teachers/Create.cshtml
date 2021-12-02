@@ -1,0 +1,63 @@
+﻿@model FinalTask.Models.Entity.Teachers
+
+@{
+    ViewData["Title"] = "Добавление";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h4>Добавление учителя</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        @* enctype="multipart/form-data" - для передачи файлов *@
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SurName" class="control-label"></label>
+                <input asp-for="SurName" class="form-control" required />
+                <span asp-validation-for="SurName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Patronymic" class="control-label"></label>
+                <input asp-for="Patronymic" class="form-control" required />
+                <span asp-validation-for="Patronymic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExamFee" class="control-label"></label>
+                <input asp-for="ExamFee" type="number" class="form-control" required />
+                <span asp-validation-for="ExamFee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label w-100"></label>
+                <input type="file" name="uploadedFile" class="pt-2" required />
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Relevance)
+                @Html.CheckBoxFor(x => x.Relevance)
+                @Html.Hidden(nameof(Model.IsTrue), "true")
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="Relevance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

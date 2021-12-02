@@ -1,0 +1,59 @@
+﻿@model FinalTask.Models.Entity.Exams
+
+@{
+    ViewData["Title"] = "Добавление";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h4>Добавление записи о сданном экзамене</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DataExam" class="control-label"></label>
+                <input asp-for="DataExam" type="date" class="form-control" required/>
+                <span asp-validation-for="DataExam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DisciplineName" class="control-label"></label>
+                <input asp-for="DisciplineName" class="form-control" required/>
+                <span asp-validation-for="DisciplineName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Score" class="control-label"></label>
+                <input asp-for="Score" class="form-control" required/>
+                <span asp-validation-for="Score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student" class="control-label"></label>
+                <select asp-for="StudentId" class ="form-control" required asp-items="ViewBag.StudentId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher" class="control-label"></label>
+                <select asp-for="TeacherId" class ="form-control" required asp-items="ViewBag.TeacherId"></select>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.Relevance)
+                @Html.CheckBoxFor(x => x.Relevance)
+                @Html.Hidden(nameof(Model.IsTrue), "true")
+            </div>
+            <div class="form-group">
+                <span asp-validation-for="Relevance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

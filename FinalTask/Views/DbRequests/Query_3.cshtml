@@ -1,0 +1,135 @@
+﻿@model IEnumerable<FinalTask.Models.Entity.Exams>
+@{
+    ViewData["Title"] = "Запросы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Запрос 3</h2>
+
+
+<div class="row">
+    <div class="col-md-12 ">
+        <h5 class="m-3 text-center">
+            Выбирает из таблицы ЭКЗАМЕНЫ информацию об экзаменах, принятых заданным преподавателем
+        </h5>
+        <div class="col-md-8">
+            <form asp-action="QueryJson_3"
+                  data-ajax-method="POST"
+                  data-ajax-success="parseResponse"
+                  data-ajax="true">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <div class="col-md-5">
+                        <label class="col-form-label" for="id">Преподаватель</label>
+                    </div>
+                    <div class="col-md-7">
+                        <select class="form-control" name="id" id="id" asp-items="ViewBag.Teacher" required></select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <input type="submit" value="Найти" class="btn btn-block btn-primary" />
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <a class="btn btn-block btn-primary" asp-area="" asp-controller="DbRequests" asp-action="QueryJson_3" 
+                           data-ajax-success="parseResponse" data-ajax="true">Все экзамены</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table class="table table-hover table-striped table-sm table-responsive-md">
+            <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataExam)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisciplineName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Score)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Student)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Teacher)
+                </th>
+            </tr>
+            </thead>
+            <tbody id="tabledata">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataExam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisciplineName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Score)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.SurName)
+                        @Html.DisplayFor(modelItem => item.Student.Name)
+                        @Html.DisplayFor(modelItem => item.Student.Patronymic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Teacher.SurName)
+                        @Html.DisplayFor(modelItem => item.Teacher.Name)
+                        @Html.DisplayFor(modelItem => item.Teacher.Patronymic)
+
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts
+{
+    @*Ненавязивый JavaScript для выполнения запроса на сервер без полного обновления страницы*@
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        // функция обратного вызова, обработчик успешного завершения AJAX-запроса
+        function parseResponse(temp) {
+            //записываем данные в таблицу
+            var target = $("#tabledata");
+            target.empty(); // почистить таблицу
+            //данные
+            for (var i = 0; i < temp.length; i++) {
+                target.append("<tr><td>" +
+                    dateFormat(temp[i].dataExam) +
+                    "</td><td>" +
+                    temp[i].disciplineName +
+                    "</td><td>" +
+                    temp[i].score +
+                    "</td><td>" +
+                    `${temp[i].student.surName} ${temp[i].student.name} ${temp[i].student.patronymic}` +
+                    "</td><td>" +
+                    `${temp[i].teacher.surName} ${temp[i].teacher.name} ${temp[i].teacher.patronymic}` +
+                    "</td><td>");
+            }//for
+
+        } //parseResponse
+
+        //преобразование даты
+        function dateFormat(needDate) {
+            let date = new Date(needDate);
+            let day = date.getDate();
+            if (day < 10) {
+                day = "0" + day;
+            }
+            let month = date.getMonth() + 1;
+            if (month < 10) {
+                month = "0" + month;
+            }
+            let year = date.getFullYear();
+            return `${day}.${month}.${year}`;
+        }//dateFormat
+
+    </script>
+}

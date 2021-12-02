@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FinalTask.ViewModel.VmQuery_6>
+@{
+    ViewData["Title"] = "Запросы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Запрос 6</h2>
+
+
+<div class="row">
+    <div class="col-md-12 ">
+        <h5 class="m-3 text-center">
+            Вычисляет для каждого экзамена размер налога (Налог=Размер оплаты*13%) и зарплаты экзаменатора (Зарплата=Размер оплаты - Налог). Сортировка по полю Дата сдачи экзамена
+        </h5>
+        <table class="table table-hover table-striped table-sm table-responsive-md">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataExam)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DisciplineName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SurNameNP)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ExamFee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Salary)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tax)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataExam)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisciplineName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SurNameNP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExamFee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tax)
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

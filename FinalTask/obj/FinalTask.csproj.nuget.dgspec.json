@@ -1,0 +1,93 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\Артема\\Devel\\Программирование\\C#\\ASP Net\\Куренной ASP Итоговое\\Куренной ASP Итоговое\\Куренной Артем\\FinalTask\\FinalTask.csproj": {}
+  },
+  "projects": {
+    "F:\\Артема\\Devel\\Программирование\\C#\\ASP Net\\Куренной ASP Итоговое\\Куренной ASP Итоговое\\Куренной Артем\\FinalTask\\FinalTask.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\Артема\\Devel\\Программирование\\C#\\ASP Net\\Куренной ASP Итоговое\\Куренной ASP Итоговое\\Куренной Артем\\FinalTask\\FinalTask.csproj",
+        "projectName": "FinalTask",
+        "projectPath": "F:\\Артема\\Devel\\Программирование\\C#\\ASP Net\\Куренной ASP Итоговое\\Куренной ASP Итоговое\\Куренной Артем\\FinalTask\\FinalTask.csproj",
+        "packagesPath": "C:\\Users\\linex\\.nuget\\packages\\",
+        "outputPath": "F:\\Артема\\Devel\\Программирование\\C#\\ASP Net\\Куренной ASP Итоговое\\Куренной ASP Итоговое\\Куренной Артем\\FinalTask\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\linex\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.20, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.20, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.jQuery.Unobtrusive.Ajax": {
+              "target": "Package",
+              "version": "[3.2.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
